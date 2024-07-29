@@ -7,7 +7,7 @@ export default function Products() {
 useEffect(()=>{
   fetchData();
 },[])
-const url="https://66a077917053166bcabb8106.mockapi.io/student"
+const url="https://66a0a2837053166bcabc1470.mockapi.io/product"
 const fetchData =()=>{
   axios.get(url)
   .then(function(res){

@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Card, CardBody, CardSubtitle, CardText, Col,CardTitle } from 'reactstrap'
 
+import Swal from 'sweetalert2'
+import { AppContext } from '../../AppContext';
+
 export default function Product(props) {
-    const { product } = props
+    const { product } = props;
+    const {addCart}=useContext(AppContext)
+
+    const handCart=(id)=>{
+        Swal.fire({
+            title: "Good job!",
+            text: "You clicked the button!",
+            icon: "success"
+          });
+          addCart(id);
+    }
     return (
         <Col lg={3} md={4} sm={6} xs={6} className='' >
 
@@ -24,7 +37,7 @@ export default function Product(props) {
                         <p>Info: {product.name}</p>
                         <Link to={`/detail/${product.id}`}>Chi tiết sản phẩm</Link>
                     </CardText>
-                    <Button>
+                    <Button onClick={()=> handCart(product.id)}>
                         Button
                     </Button>
                 </CardBody>
